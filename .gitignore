@@ -1,0 +1,7 @@
+main
+_korali_result
+
+*.o
+
+*.swp
+*.orig
