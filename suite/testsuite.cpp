@@ -32,19 +32,12 @@ void TestSuite::run()
 
         auto k = factory.second->createEngine(_dimMap[funcname], _domainMap[funcname].first, _domainMap[funcname].second, _maxModelEvals[funcname], _fitnessMap[funcname] - _precision);
 
-        auto model = [func](Korali::ModelData& d)
-        {
-          double res = func.second( d.getVariableCount(), &d.getVariables()[0] );
-          d.addResult(res);
-        };
-        k.setModel(model);
+        k["Problem"]["Objective Function"] = func;
 
         printf("\n\nRun Test: %s\nName: %s\n\n", funcname.c_str(), fname.c_str());
 
-        k.run();
-        auto config = k.getConfiguration();
-        std::string solver = config["Solver"].get<std::string>();
-        size_t eval = config[solver]["State"]["EvaluationCount"].get<size_t>();
+        k.runSingle();
+        size_t eval = k["Solver"]["Evaluation Count"];
         evec.push_back(eval);
     }
 

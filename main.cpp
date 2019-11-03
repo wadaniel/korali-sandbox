@@ -1,10 +1,17 @@
 #include <stdio.h>
 
-#include "korali.h"
+#include "korali.hpp"
 #include "suite/testsuite.h"
 #include "model/mvf.h"
 
 using namespace Suite;
+
+
+void ackley(korali::Sample& sample)
+{
+    // TODO
+    sample["Evaluation"] = 0.0;
+}
 
 int main(int, char**)
 {
@@ -22,7 +29,7 @@ int main(int, char**)
 
   
   //t.addTestFunction("Ackley2", &mvfAckley, 2, -30.0, 30.0, 0.0, 100000);
-  t.addTestFunction("Ackley16", &mvfAckley, 64, -30.0, 30.0, 0.0, 100000);
+  t.addTestFunction("Ackley16", &ackley, 64, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Rosenbrock2", &mvfRosenbrock, 2, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Rosenbrock16", &mvfRosenbrock, 16, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Sphere", &mvfSphere, 2, -10.0, 10.0, 0.0, 100000);

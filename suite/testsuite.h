@@ -6,13 +6,13 @@
 #include <string>
 #include <functional>
 
-#include "korali.h"
+#include "korali.hpp"
 #include "enginefactory.h"
 
 namespace Suite
 {
 
-typedef double (*TestFun) (int, double*);
+typedef void (*TestFun) (korali::Sample&);
 
 class TestSuite
 {

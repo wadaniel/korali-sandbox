@@ -3,9 +3,9 @@
 namespace Suite
 {
 
-Korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness )
+korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness )
 {
-  auto k = Korali::Engine();
+  auto k = korali::Engine();
   k["Verbosity"] = "Minimal";
   k["CMA-ES"]["Result Output Frequency"] = maxEval+1;
 
@@ -40,9 +40,9 @@ Korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double 
   return k;
 }
 
-Korali::Engine DEFactory::createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness )
+korali::Engine DEFactory::createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness )
 {
-  auto k = Korali::Engine();
+  auto k = korali::Engine();
   k["Verbosity"] = "Minimal";
   k["DE"]["Result Output Frequency"] = 5000;
 

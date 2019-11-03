@@ -1,7 +1,7 @@
 #ifndef _ENGINE_FACTORY_H_
 #define _ENGINE_FACTORY_H_
 
-#include "korali.h"
+#include "korali.hpp"
 
 namespace Suite
 {
@@ -14,7 +14,7 @@ public:
   EngineFactory() {};
   ~EngineFactory() {};
 
-  virtual Korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness ) = 0;
+  virtual korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness ) = 0;
 
 };
 
@@ -23,7 +23,7 @@ class CMAESFactory : public EngineFactory
 public:
   CMAESFactory(std::string muType, double eps) : EngineFactory(), _muType(muType), _eps(eps) {};
   ~CMAESFactory() {};
-  Korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness );
+  korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness );
 
 private:
   std::string _muType;
@@ -40,7 +40,7 @@ public:
     _acceptRule(acceptrule) {}
 
   ~DEFactory() {};
-  Korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness );
+  korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness );
 
 private:
   std::string _parent;
