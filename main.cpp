@@ -10,6 +10,7 @@ using namespace Suite;
 void ackley(korali::Sample& sample)
 {
     // TODO
+    printf("insideackley\n");
     sample["Evaluation"] = 0.0;
 }
 
@@ -41,7 +42,7 @@ int main(int, char**)
   //t.addTestFunction("Levy", &mvfLevy, 4, -50.0, 50.0, -21.502356, 100000);
 
   t.run();
-  t.makeStatistics();
+  //t.makeStatistics();
 
   return 0;
 }
