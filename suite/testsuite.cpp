@@ -40,7 +40,6 @@ void TestSuite::run()
 
         auto k = factory.second->createEngine(_dimMap[funcname], _domainMap[funcname].first, _domainMap[funcname].second, _maxModelEvals[funcname], _fitnessMap[funcname] - _precision);
 
-        //k["Problem"]["Objective Function"] = func;
         k["Problem"]["Objective Function"] = &func.second;
 
         printf("\n\nRun Test: %s\nName: %s\n\n", funcname.c_str(), fname.c_str());
@@ -58,15 +57,15 @@ void TestSuite::run()
 }
 
 
-void TestSuite::addFactory(std::string name, EngineFactory* factory_ptr)
+void TestSuite::addFactory(std::string name, EngineFactory* factoryPtr)
 {
-  _factories.push_back(std::pair<std::string, EngineFactory*>(name, factory_ptr));
+  _factories.push_back(std::pair<std::string, EngineFactory*>(name, factoryPtr));
 }
 
 
-void TestSuite::addTestFunction(std::string name, TestFun fptr, size_t dim, double lowerBound, double upperBound, double fitness, size_t numFunEval )
+void TestSuite::addTestFunction(std::string name, TestFunRef fref, size_t dim, double lowerBound, double upperBound, double fitness, size_t numFunEval )
 {
-  _functions.push_back( std::pair<std::string, TestFun> (name, fptr) );
+  _functions.push_back( std::pair<std::string, TestFunRef> (name, fref) );
 
   _dimMap.insert( std::pair<std::string, size_t>(name, dim) );
 

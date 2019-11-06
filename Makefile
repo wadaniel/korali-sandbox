@@ -2,26 +2,21 @@ BINARIES = main
 KORALICXX=$(shell python3 -m korali.cxx --compiler)
 KORALICFLAGS=`python3 -m korali.cxx --cflags`
 KORALILIBS=`python3 -m korali.cxx --libs`
+SUBDIRS=$(wildcard */.)
 
 .SECONDARY:
 .PHONY: all 
 all: $(BINARIES)
+	
 
-$(BINARIES) : % : %.o model/mvf.o model/rnd.o suite/testsuite.o suite/enginefactory.o
+$(BINARIES) : % : %.o model/mvf.o model/rnd.o model/model.o suite/testsuite.o suite/enginefactory.o
 	$(KORALICXX) -o $@ $^ $(KORALILIBS)
 
-model/mvf.o:
+model/%.o:
 	$(MAKE) -C model all
 
-model/rnd.o:
-	$(MAKE) -C model all
-
-suite/testsuite.o:
+suite/%.o:
 	$(MAKE) -C suite all
-
-suite/enginefactory.o:
-	$(MAKE) -C suite all
-
 
 %.o: %.cpp
 	$(KORALICXX) -c $< $(KORALICFLAGS)
@@ -30,4 +25,4 @@ suite/enginefactory.o:
 clean:
 	$(MAKE) -C model clean
 	$(MAKE) -C suite clean
-	$(RM) $(BINARIES) *.o *.ti *.optrpt *.txt
+	$(RM) $(BINARIES) *.o

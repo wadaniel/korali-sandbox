@@ -12,7 +12,7 @@
 namespace Suite
 {
 
-typedef void (&TestFun) (korali::Sample&);
+typedef void (&TestFunRef) (korali::Sample&);
 
 class TestSuite
 {
@@ -23,8 +23,8 @@ public:
   ~TestSuite();
 
   void run();
-  void addFactory(std::string name, EngineFactory* fact_ptr);
-  void addTestFunction(std::string name, TestFun fptr, size_t dim, double lowerBound, double upperBound, double fitness, size_t numFunEval);
+  void addFactory(std::string name, EngineFactory* facPtr);
+  void addTestFunction(std::string name, TestFunRef fref, size_t dim, double lowerBound, double upperBound, double fitness, size_t numFunEval);
   void addTargetFitness(std::string name, double fitness );
   void addMaxFunctionEvaluations(std::string, size_t numFunEval);
   void makeStatistics();
@@ -36,7 +36,7 @@ private:
   size_t _repetitions;
   double _precision;
 
-  std::vector<std::pair<std::string, TestFun>> _functions;
+  std::vector<std::pair<std::string, TestFunRef>> _functions;
   std::map<std::string, size_t> _dimMap;
   std::map<std::string, std::pair<double, double>> _domainMap;
   std::map<std::string, double> _fitnessMap;
