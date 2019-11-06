@@ -6,6 +6,14 @@
 namespace Suite
 {
 
+void ackley(korali::Sample& sample)
+{
+    // TODO
+    printf("insideackley\n");
+    sample["Evaluation"] = 0.0;
+}
+
+
 TestSuite::TestSuite(size_t rep, double prec) : _repetitions(rep), _precision(prec) { };
 
 TestSuite::~TestSuite() {};
@@ -32,7 +40,8 @@ void TestSuite::run()
 
         auto k = factory.second->createEngine(_dimMap[funcname], _domainMap[funcname].first, _domainMap[funcname].second, _maxModelEvals[funcname], _fitnessMap[funcname] - _precision);
 
-        k["Problem"]["Objective Function"] = func;
+        //k["Problem"]["Objective Function"] = func;
+        k["Problem"]["Objective Function"] = &func.second;
 
         printf("\n\nRun Test: %s\nName: %s\n\n", funcname.c_str(), fname.c_str());
 

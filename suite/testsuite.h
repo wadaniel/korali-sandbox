@@ -12,7 +12,7 @@
 namespace Suite
 {
 
-typedef void (*TestFun) (korali::Sample&);
+typedef void (&TestFun) (korali::Sample&);
 
 class TestSuite
 {

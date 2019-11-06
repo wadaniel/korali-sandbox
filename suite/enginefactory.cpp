@@ -5,6 +5,27 @@ namespace Suite
 
 korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness )
 {
+
+
+    auto k = korali::Engine();
+
+    // Configuring Problem.
+    k["Problem"]["Type"] = "Evaluation/Direct/Basic";
+    k["Problem"]["Objective"] = "Maximize";
+
+    // Defining the problem's variables.
+    k["Variables"][0]["Name"] = "X";
+    k["Variables"][0]["Lower Bound"] = -10.0;
+    k["Variables"][0]["Upper Bound"] = +10.0;
+
+    // Configuring CMA-ES parameters
+    k["Solver"]["Type"] = "Optimizer/CMAES";
+    k["Solver"]["Population Size"] = 32;
+    k["Solver"]["Termination Criteria"]["Min Value Difference Threshold"] = 1e-7;
+    k["Solver"]["Termination Criteria"]["Max Generations"] = 100;
+
+
+  /*
   auto k = korali::Engine();
 
   k["Problem"]["Type"] = "Evaluation/Direct/Basic";
@@ -23,7 +44,7 @@ korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double 
     k["Variables"][i]["Upper Bound"] = upperbound;
   }
   printf("..\n");
-
+  */
   //k["Conduit"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   //k["Solver"]["Termination Criteria"]["Value"] = targetFitness;
   return k;
