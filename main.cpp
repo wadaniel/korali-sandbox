@@ -9,20 +9,17 @@ using namespace Suite;
 int main(int, char**)
 {
 
-  auto t = TestSuite(1, 1e-4); 
+  auto t = TestSuite(10, 1e-4); 
   
-  //t.addFactory("Prop 7", new CMAESFactory("Proportional", 0.7));
-  //t.addFactory("Prop 5", new CMAESFactory("Proportional", 0.7));
-  //t.addFactory("Prop 1", new CMAESFactory("Proportional", 0.1));
-  //t.addFactory("Equal", new CMAESFactory("Equal", 0.7));
   t.addFactory("Linear", new CMAESFactory("Linear"));
-  //t.addFactory("Logarithmic", new CMAESFactory("Logarithmic", 0.7));
+  t.addFactory("Logarithmic", new CMAESFactory("Logarithmic"));
+  t.addFactory("Equal", new CMAESFactory("Equal"));
   //t.addFactory("DE Self Adaptive", new DEFactory("Best", "Self Adaptive", "Greedy"));
   //t.addFactory("DE Default", new DEFactory("Best", "Default", "Greedy"));
 
   
-  //t.addTestFunction("Ackley2", &mvfAckley, 2, -30.0, 30.0, 0.0, 100000);
-  t.addTestFunction("Ackley16", kAckley, 2, -30.0, 30.0, 0.0, 100000);
+  t.addTestFunction("Ackley2",  kAckley,  2, -30.0, 30.0, 0.0, 100000);
+  t.addTestFunction("Ackley16", kAckley, 16, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Rosenbrock2", &mvfRosenbrock, 2, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Rosenbrock16", &mvfRosenbrock, 16, -30.0, 30.0, 0.0, 100000);
   //t.addTestFunction("Sphere", &mvfSphere, 2, -10.0, 10.0, 0.0, 100000);
@@ -34,7 +31,7 @@ int main(int, char**)
   //t.addTestFunction("Levy", &mvfLevy, 4, -50.0, 50.0, -21.502356, 100000);
 
   t.run();
-  //t.makeStatistics();
+  t.makeStatistics();
 
   return 0;
 }

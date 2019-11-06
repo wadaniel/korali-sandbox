@@ -20,10 +20,11 @@ korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double 
   }
   
   k["Solver"]["Termination Criteria"]["Min Value"] = targetFitness;
+  k["Solver"]["Termination Criteria"]["Max Generations"] = 99999999;
   k["Conduit"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Frequency"] = 0;
-  k["Console Output"]["Frequency"] = 10;
-  k["Console Output"]["Verbosity"] = "Normal";
+  k["Console Output"]["Frequency"] = 0;
+  k["Console Output"]["Verbosity"] = "Minimal";
   
   return k;
 }
@@ -49,10 +50,11 @@ korali::Engine DEFactory::createEngine(size_t dim, double lowerbound, double upp
   }
   
   k["Solver"]["Termination Criteria"]["Min Value"] = targetFitness;
+  k["Solver"]["Termination Criteria"]["Max Generations"] = 99999999;
   k["Conduit"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Frequency"] = 0;
   k["Console Output"]["Frequency"] = 10;
-  k["Console Output"]["Verbosity"] = "Normal";
+  k["Console Output"]["Verbosity"] = "Minimal";
   
   return k;
 }
