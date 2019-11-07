@@ -33,7 +33,7 @@ void TestSuite::run()
 
         k["Problem"]["Objective Function"] = &func.second;
 
-        printf("\n\nRun Test: %s\nName: %s\n\n", funcname.c_str(), fname.c_str());
+        printf("\n\nRun Test: %s\nRepetition %zu\nName: %s\n\n", funcname.c_str(), rep, fname.c_str());
 
         k.runSingle();
         size_t eval = k["Conduit"]["Internal"]["Model Evaluation Count"];
