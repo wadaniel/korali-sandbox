@@ -33,11 +33,13 @@ private:
 class LMCMAFactory : public EngineFactory
 {
 public:
-  LMCMAFactory(std::string muType, size_t memory = 0, size_t interval = 0) : EngineFactory(), _muType(muType), _memory(memory), _interval(interval) {};
+  LMCMAFactory(std::string muType, std::string rng, size_t memory = 0, size_t interval = 0) : 
+      EngineFactory(), _muType(muType), _rng(rng), _memory(memory), _interval(interval) {};
   ~LMCMAFactory() {};
   korali::Engine createEngine(size_t dim, double lowerbound, double upperbound, size_t maxEval, double targetFitness );
 
 private:
+  std::string _rng;
   std::string _muType;
   size_t _memory;
   size_t _interval;

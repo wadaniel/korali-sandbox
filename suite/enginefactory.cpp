@@ -25,7 +25,7 @@ korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double 
   k["Solver"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Active"] = 0;
   k["Console Output"]["Frequency"] = 0;
-  k["Console Output"]["Verbosity"] = "Minimal";
+  k["Console Output"]["Verbosity"] = "Normal";
   
   return k;
 }
@@ -39,6 +39,7 @@ korali::Engine LMCMAFactory::createEngine(size_t dim, double lowerbound, double 
   k["Problem"]["Objective"]      = "Minimize";
   k["Solver"]["Type"]            = "Optimizer/LMCMAES";
   k["Solver"]["Population Size"] = size_t(4+3*log(dim));
+  k["Solver"]["Random Number Distribution"] = _rng;
   k["Solver"]["Mu Type"]         = _muType;
   
   if(_memory > 0)   k["Solver"]["Subset Size"]         = _memory;
@@ -55,7 +56,7 @@ korali::Engine LMCMAFactory::createEngine(size_t dim, double lowerbound, double 
   k["Solver"]["Termination Criteria"]["Max Generations"] = std::numeric_limits<size_t>::max();
   k["Solver"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Active"] = 0;
-  k["Console Output"]["Frequency"] = 1;
+  k["Console Output"]["Frequency"] = 0;
   k["Console Output"]["Verbosity"] = "Normal";
   
   return k;
