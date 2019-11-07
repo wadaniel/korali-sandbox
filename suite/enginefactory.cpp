@@ -21,8 +21,8 @@ korali::Engine CMAESFactory::createEngine(size_t dim, double lowerbound, double 
   }
   
   k["Solver"]["Termination Criteria"]["Min Value"] = targetFitness;
-  k["Solver"]["Termination Criteria"]["Max Generations"] = 99999999;
-  k["Conduit"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
+  k["Solver"]["Termination Criteria"]["Max Generations"] = std::numeric_limits<size_t>::max();
+  k["Solver"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Active"] = 0;
   k["Console Output"]["Frequency"] = 0;
   k["Console Output"]["Verbosity"] = "Minimal";
@@ -52,8 +52,8 @@ korali::Engine LMCMAFactory::createEngine(size_t dim, double lowerbound, double 
   }
   
   k["Solver"]["Termination Criteria"]["Min Value"] = targetFitness;
-  k["Solver"]["Termination Criteria"]["Max Generations"] = 99999999;
-  k["Conduit"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
+  k["Solver"]["Termination Criteria"]["Max Generations"] = std::numeric_limits<size_t>::max();
+  k["Solver"]["Termination Criteria"]["Max Model Evaluations"] = maxEval;
   k["Results Output"]["Active"] = 0;
   k["Console Output"]["Frequency"] = 1;
   k["Console Output"]["Verbosity"] = "Normal";

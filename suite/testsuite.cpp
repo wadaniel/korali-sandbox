@@ -36,7 +36,7 @@ void TestSuite::run()
         printf("\n\nRun Test: %s\nRepetition %zu\nName: %s\n\n", funcname.c_str(), rep, fname.c_str());
 
         k.runSingle();
-        size_t eval = k["Conduit"]["Internal"]["Model Evaluation Count"];
+        size_t eval = k["Solver"]["Internal"]["Model Evaluation Count"];
         evec.push_back(eval);
     }
 
